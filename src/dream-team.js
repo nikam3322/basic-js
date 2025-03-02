@@ -13,37 +13,19 @@ const { NotImplementedError } = require('../extensions/index.js');
  * createDreamTeam(['Olivia', 1111, 'Lily', 'Oscar', true, null]) => 'LOO'
  *
  */
-function createDreamTeam(/* members */) {
-  // let result = '';
-  // // let filtredMembers = members.filter((elem) => typeof elem == 'string');
-  // // if (filtredMembers.length == 0) return false;
-  // // const sortedFiltredMembers = filtredMembers.sort();
-  // // //   if (a.toLowerCase() < b.toLowerCase()) {
-  // // //     return -1;
-  // // //   }
-  // // //   if (a.toLowerCase() > b.toLowerCase()) {
-  // // //     return 1;
-  // // //   }
-  // // //   return 0;
-  // // // });
-
-  // // for (let i = 0; i < sortedFiltredMembers.length; i++) {
-  // //   result += sortedFiltredMembers[i][0];
-  // // }
-  // // return result;
-
-  // let sortedMembers = members.sort();
-  // if (sortedMembers.filter(String).length == 0) {
-  //   return false
-  // } else {
-  //   for (let i = 0; i < sortedMembers.length; i++) {
-  //     result += sortedMembers[i][0];
-  //   }
-  // }
-  // return result.trim();
-  throw new NotImplementedError('Not implemented');
-  // remove line with error and write your code here
-  }
+function createDreamTeam(members) {
+  let result = '';  
+  if(Array.isArray(members)) {
+    let newArr = members.filter(el => typeof el === 'string' && el !== '').map(y => y.replace(/\s+/g, '')).map(z => z.toUpperCase());    
+    newArr.sort();    
+    newArr.forEach(x => {
+      result += x[0];
+    })
+    return result;
+  } else {
+    return false;
+  }  
+}
 
 module.exports = {
   createDreamTeam
